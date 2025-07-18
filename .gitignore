@@ -1,0 +1,12 @@
+venv
+
+# Secrets
+.secrets.toml
+credentials.json
+*.key
+.streamlit/secrets.toml
+*.json
+
+# Python
+__pycache__/
+*.py[cod]
