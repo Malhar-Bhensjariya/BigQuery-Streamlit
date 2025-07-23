@@ -12,7 +12,7 @@ def show():
     try:
         datasets = [ds.dataset_id for ds in clients['bq'].list_datasets()]
         if datasets:
-            st.subheader("📋 Available Datasets")
+            st.subheader("Available Datasets")
             cols = st.columns(2)
             for i, ds in enumerate(datasets):
                 with cols[i % 2]:

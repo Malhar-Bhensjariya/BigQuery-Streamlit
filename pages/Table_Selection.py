@@ -5,7 +5,7 @@ from components.navigation import navigate_to, back_button
 def show():
     clients = get_clients()
     
-    st.title(f"📊 Dataset: `{st.session_state.selected_dataset}`")
+    st.title(f"Dataset: `{st.session_state.selected_dataset}`")
     back_button()
 
     # List existing tables
@@ -14,7 +14,7 @@ def show():
                   clients['bq'].list_tables(st.session_state.selected_dataset)]
         
         if tables:
-            st.subheader("📋 Available Tables")
+            st.subheader("Available Tables")
             cols = st.columns(2)
             for i, tbl in enumerate(tables):
                 with cols[i % 2]:

@@ -10,7 +10,7 @@ from pages import (
 # Page configuration
 st.set_page_config(
     page_title="BigQuery Streamlit",
-    page_icon="📊",
+    page_icon="☁️",
     layout="wide",
     initial_sidebar_state="collapsed"
 )
@@ -54,7 +54,7 @@ def main():
     
     # Sidebar navigation (optional)
     with st.sidebar:
-        st.title("🧭 Navigation")
+        st.title("Navigation")
         current_page = st.session_state.current_page
         
         # Show current progress

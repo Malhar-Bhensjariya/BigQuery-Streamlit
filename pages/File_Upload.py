@@ -48,7 +48,7 @@ def upload_to_gcs(file, dataset, table, mode):
         return None, str(e)
 
 def show():
-    st.title(f"📤 {st.session_state.mode.capitalize()} to Table")
+    st.title(f"{st.session_state.mode.capitalize()} to Table")
     back_button()
     
     # Validate session state
