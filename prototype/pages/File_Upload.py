@@ -104,14 +104,6 @@ def show():
             if result and result.returncode == 0:
                 st.success(f"✅ File uploaded successfully as: `{filename}`")
                 st.code(result.stdout, language="text")
-                
-                # Optionally show how to verify
-                st.info("""
-                **Verify in GCS:**
-                ```bash
-                gsutil ls gs://my-smart-ingest-bucket/
-                ```
-                """)
             else:
                 st.error("❌ Upload failed")
                 if result:

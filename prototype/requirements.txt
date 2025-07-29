@@ -1,0 +1,8 @@
+streamlit
+google-cloud-bigquery
+google-cloud-storage
+google-cloud-aiplatform
+pandas
+google-auth
+requests
+dotenv

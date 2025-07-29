@@ -1,0 +1,17 @@
+# FastAPI & Server
+fastapi
+uvicorn[standard]
+pydantic
+
+# ML / Data
+numpy
+pandas
+scikit-learn
+torch
+joblib
+
+# Google Cloud
+google-cloud-storage
+
+# Optional utilities
+python-multipart     # if handling file uploads (safe to include)
