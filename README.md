@@ -54,7 +54,9 @@ This Streamlit application offers a seamless interface for uploading CSV files t
 
 - Customizable Workflow: Users can tailor the configuration of the machine learning pipeline to suit their specific needs or rely on the default auto-detection for a quick setup.
 
-- Streamlined Integration: The entire process, from data upload to prediction, is fully integrated, ensuring a smooth user experience.## Project Structure
+- Streamlined Integration: The entire process, from data upload to prediction, is fully integrated, ensuring a smooth user experience.
+
+## Project Structure
 
 ```text
 📦bigquery-streamlit/
