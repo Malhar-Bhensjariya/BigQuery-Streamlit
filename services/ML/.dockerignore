@@ -1,0 +1,22 @@
+# Ignore Python cache and compiled files
+__pycache__/
+*.pyc
+
+# Ignore Git files
+.git
+.gitignore
+
+# Ignore IDE/editor files
+.vscode/
+*.swp
+*.sublime*
+.dist
+
+# Ignore OS junk
+.DS_Store
+Thumbs.db
+
+# Ignore env/secrets
+.env
+.env.*
+*.json  # (if you have local GCP key files here)

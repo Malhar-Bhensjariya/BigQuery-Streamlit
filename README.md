@@ -68,6 +68,7 @@ This Streamlit application offers a seamless interface for uploading CSV files t
 │   │   ├── File_Upload.py
 │   │   └── Prediction.py     
 │   ├──💲deploy.sh             # Deploy streamlit app
+│   ├── .dockerignore   
 │   ├── Dockerfile
 │   ├── .env           
 │   ├── app.py                  # Main application entry point
@@ -88,13 +89,15 @@ This Streamlit application offers a seamless interface for uploading CSV files t
 │   │   ├── main.py          
 │   │   ├── model_train.py          
 │   │   ├── model_definition.py                  
-│   │   ├── requirements.txt   
+│   │   ├── requirements.txt 
+│   │   ├── .dockerignore   
 │   │   └── Dockerfile            # Exposed on Port 81       
 │   ├── 📂Predict/
 │   │   ├── main.py          
 │   │   ├── predict.py          
 │   │   ├── model_definition.py                
 │   │   ├── requirements.txt   
+│   │   ├── .dockerignore   
 │   │   └── Dockerfile            # Exposed on Port 81 
 │   └──💲deploy.sh                  # Deploying services to GCP
 │
