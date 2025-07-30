@@ -71,6 +71,12 @@
 │   │   └── Dockerfile            # Exposed on Port 81 
 │   └──💲setup.sh                  # Main application entry point
 │
+├── 📂assets/
+│   └── Demo.gif/  
 ├── .gitignore              # Github ignore files/folders
 └── ℹ️README.md               # Project documentation
 ```
+
+Here’s a quick demo of how it works:
+
+![Demo GIF](assets/Demo.gif)
