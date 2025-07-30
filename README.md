@@ -2,29 +2,6 @@
 
 ```text
 📦bigquery-streamlit/
-├── 📂frontend/                       
-│   ├── 📂public/                      # React public assets
-│   ├── 📂src/
-│   │   ├── 📂components/ 
-│   │   │   ├── PredictionForm.jsx
-│   │   │   └── TrainModel.jsx
-│   │   │
-│   │   ├── 📂context/
-│   │   │   └── AppContext.jsx
-│   │   │
-│   │   ├── 📂pages/                  
-│   │   │   ├── DatasetSelection.jsx
-│   │   │   ├── TableSelection.jsx
-│   │   │   ├── FileUpload.jsx
-│   │   │   └── Prediction.jsx
-│   │   │
-│   │   ├── App.jsx                   # Main app entry
-│   │   └── main.jsx                  # React DOM render
-│   │
-│   ├── .env                          # Replaces secrets.toml (GCP creds + config)
-│   ├── package.json                  # React dependencies
-│   └── vite.config.js                # If using Vite (else use CRA config)
-│
 ├── 📂prototype/
 │   ├── 📂.streamlit/
 │   │   └── secrets.toml          # GCP credentials and config
