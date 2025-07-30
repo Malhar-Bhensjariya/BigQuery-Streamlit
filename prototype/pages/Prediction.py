@@ -4,9 +4,14 @@ import os
 from components.navigation import back_button
 from components.train_model import show_training_popup
 from components.prediction_form import show_prediction_popup
+from dotenv import load_dotenv
+
+load_dotenv()
 
 # Paths to Google Cloud SDK
-GCLOUD_SDK_BIN = r"D:\AppData\Google\Cloud SDK\google-cloud-sdk\bin"
+GCLOUD_SDK_BIN = os.environ.get("GCLOUD_SDK_BIN")
+if not GCLOUD_SDK_BIN:
+    st.warning("⚠️ GCLOUD_SDK_BIN is not set. Please check your .env file.")
 GSUTIL_PATH = os.path.join(GCLOUD_SDK_BIN, "gsutil.cmd")
 BUCKET_NAME = "my-smart-ingest-bucket"
 

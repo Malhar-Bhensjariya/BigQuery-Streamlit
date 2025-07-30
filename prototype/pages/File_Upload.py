@@ -3,13 +3,19 @@ import os
 import tempfile
 import subprocess
 from components.navigation import back_button
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
 
 # Initialize session state
 if 'uploaded_file' not in st.session_state:
     st.session_state.uploaded_file = None
 
 # Paths to Google Cloud SDK (update these if needed)
-GCLOUD_SDK_BIN = r"D:\AppData\Google\Cloud SDK\google-cloud-sdk\bin"
+GCLOUD_SDK_BIN = os.environ.get("GCLOUD_SDK_BIN")
+if not GCLOUD_SDK_BIN:
+    st.warning("⚠️ GCLOUD_SDK_BIN is not set. Please check your .env file.")
 GSUTIL_PATH = os.path.join(GCLOUD_SDK_BIN, "gsutil.cmd")
 BUCKET_NAME = "my-smart-ingest-bucket"  # From secrets.toml
 
