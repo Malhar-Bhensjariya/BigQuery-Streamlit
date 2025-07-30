@@ -1,5 +1,5 @@
 
-# BigQuery Streamlit Application
+# AutoML Streamlit Application
 
 This Streamlit application offers a seamless interface for uploading CSV files to Google Cloud Storage (GCS) and managing BigQuery datasets. The application is designed to simplify the process of importing, analyzing, and utilizing data in BigQuery, with additional support for machine learning (ML) model training and predictions.
 ## Features
