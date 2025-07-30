@@ -114,23 +114,7 @@ else
     echo "✅ Service account key generated: $KEY_FILE"
 fi
 
-# === 6. PYTHON DEPENDENCIES ===
-echo ""
-echo "🐍 Installing Python Dependencies"
-echo "--------------------------------"
-
-if [ -f "prototype/requirements.txt" ]; then
-    echo "Installing dependencies from prototype/requirements.txt..."
-    pip install -r prototype/requirements.txt
-    echo "✅ Python dependencies installed"
-else
-    echo "⚠️  Warning: prototype/requirements.txt not found"
-    echo "   Make sure to install dependencies manually later"
-fi
-
-
-ARTIFACT_REPO=ml-service-repo
-
+# === 6. STREAMLIT ENV CONFIGURATION ===
 echo ""
 echo "🧪 Creating prototype/.env file..."
 echo "----------------------------------"
@@ -139,6 +123,7 @@ cat <<EOF > prototype/.env
 GCLOUD_SDK_BIN=
 TRAINING_URL=
 PREDICT_URL=
+ARTIFACT_REPO=ml-service-repo
 EOF
 echo "✅ prototype/.env file created"
 
