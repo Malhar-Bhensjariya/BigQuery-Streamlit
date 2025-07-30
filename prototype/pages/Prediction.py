@@ -4,16 +4,22 @@ import os
 from components.navigation import back_button
 from components.train_model import show_training_popup
 from components.prediction_form import show_prediction_popup
+from components.gcp_clients import get_clients
 from dotenv import load_dotenv
 
 load_dotenv()
 
-# Paths to Google Cloud SDK
-GCLOUD_SDK_BIN = os.environ.get("GCLOUD_SDK_BIN")
-if not GCLOUD_SDK_BIN:
-    st.warning("⚠️ GCLOUD_SDK_BIN is not set. Please check your .env file.")
-GSUTIL_PATH = os.path.join(GCLOUD_SDK_BIN, "gsutil.cmd")
-BUCKET_NAME = "my-smart-ingest-bucket"
+clients = get_clients()
+
+GOOGLE_SDK_BIN = clients.get("gcloud_sdk_bin") or os.getenv("GCLOUD_SDK_BIN")
+if not GOOGLE_SDK_BIN:
+    st.warning("⚠️ gcloud_sdk_bin not found in secrets.toml or .env")
+
+GSUTIL_PATH = os.path.join(GOOGLE_SDK_BIN, "gsutil.cmd") if GOOGLE_SDK_BIN else "gsutil"
+
+BUCKET_NAME = clients.get("bucket") or os.getenv("BUCKET_NAME")
+if not BUCKET_NAME:
+    st.warning("⚠️ GCS bucket name not found in secrets.toml or .env")
 
 def verify_gsutil():
     """Check if gsutil is available"""

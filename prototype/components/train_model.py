@@ -2,13 +2,18 @@ import streamlit as st
 import requests
 import json
 from time import sleep
+from gcp_clients import get_clients
 from dotenv import load_dotenv
 import os
-
 load_dotenv()
 
-# Training API endpoint
-T_URL = os.environ.get('TRAINING_URL')
+clients = get_clients()
+
+T_URL = clients.get("ml_url") or os.getenv("TRAINING_URL")
+
+if not T_URL:
+    st.warning("⚠️ TRAINING_URL not found in secrets.toml or .env")
+
 
 # Default configuration
 DEFAULT_CONFIG = {

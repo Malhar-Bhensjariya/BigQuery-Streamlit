@@ -1,16 +1,17 @@
 import streamlit as st
 import requests
 import json
+from gcp_clients import get_clients
 from dotenv import load_dotenv
 import os
-
 load_dotenv()
 
-# Prediction API endpoint
-P_URL = os.environ.get('PREDICT_URL')
+clients = get_clients()
 
-import requests
-import streamlit as st
+P_URL = clients.get("predict_url") or os.getenv("PREDICT_URL")
+
+if not P_URL:
+    st.warning("⚠️ PREDICT_URL not found in secrets.toml or .env")
 
 def show_prediction_form():
     """

@@ -131,31 +131,49 @@ fi
 
 ARTIFACT_REPO=ml-service-repo
 
-# Service URLs (will be populated after deployment)
-TRAINING_URL=""
-PREDICT_URL=""
+echo ""
+echo "🧪 Creating prototype/.env file..."
+echo "----------------------------------"
+
+cat <<EOF > prototype/.env
+GCLOUD_SDK_BIN=
+TRAINING_URL=
+PREDICT_URL=
 EOF
-echo "✅ .env file created"
+echo "✅ prototype/.env file created"
 
 # === 8. STREAMLIT SECRETS CONFIGURATION ===
 echo ""
-echo "Creating Streamlit secrets.toml..."
+echo "🛠️  Creating Streamlit secrets.toml..."
+echo "----------------------------------------"
 
 # Create .streamlit directory
 mkdir -p prototype/.streamlit
 
+# Detect gcloud SDK binary path
+GCLOUD_SDK_BIN=$(python3 -c "import shutil; p=shutil.which('gcloud'); print(p.replace('gcloud', '') if p else '')")
+
+if [ -z "$GCLOUD_SDK_BIN" ]; then
+    echo "❌ Could not detect gcloud SDK path. Make sure 'gcloud' is in your PATH."
+    exit 1
+fi
+
+echo "✅ GCLOUD_SDK_BIN detected: $GCLOUD_SDK_BIN"
+
 # Extract service account details from JSON key
 if [ -f "$KEY_FILE" ]; then
-    # Parse JSON using python (more reliable than jq which might not be installed)
+    # Use python to generate secrets.toml
     python3 -c "
 import json
+import os
 import sys
 
 try:
     with open('$KEY_FILE', 'r') as f:
         data = json.load(f)
-    
-    # Create secrets.toml content
+
+    gcloud_sdk_bin = os.environ.get('GCLOUD_SDK_BIN', '')
+
     secrets_content = f'''[gcp_credentials]
 type = \"{data['type']}\"
 project_id = \"{data['project_id']}\"
@@ -173,6 +191,7 @@ project_id = \"$PROJECT_ID\"
 region = \"$PRIMARY_REGION\"
 dataset_id = \"dataset1\"
 bucket_name = \"my-smart-ingest-bucket\"
+gcloud_sdk_bin = \"{gcloud_sdk_bin}\"
 
 [cloud_run]
 ml_service_url = \"\"
@@ -181,12 +200,13 @@ predict_service_url = \"\"
 
     with open('prototype/.streamlit/secrets.toml', 'w') as f:
         f.write(secrets_content)
-    
-    print('✅ secrets.toml created successfully')
+
+    print('✅ secrets.toml created successfully at prototype/.streamlit/secrets.toml')
+
 except Exception as e:
     print(f'❌ Error creating secrets.toml: {e}')
     sys.exit(1)
-"
+" GCLOUD_SDK_BIN="$GCLOUD_SDK_BIN"
 else
     echo "❌ Error: Service account key file not found"
     exit 1
