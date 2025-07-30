@@ -2,9 +2,10 @@ venv
 
 # Secrets
 .secrets.toml
+secrets.toml
 credentials.json
 *.key
-.streamlit/secrets.toml
+**/.streamlit/secrets.toml
 *.json
 .env 
 
