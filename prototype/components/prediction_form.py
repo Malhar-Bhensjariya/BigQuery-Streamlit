@@ -1,7 +1,7 @@
 import streamlit as st
 import requests
 import json
-from gcp_clients import get_clients
+from components.gcp_clients import get_clients
 from dotenv import load_dotenv
 import os
 load_dotenv()
